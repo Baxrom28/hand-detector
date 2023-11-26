@@ -44,21 +44,21 @@ function drawHand(predictions, ctx) {
 
 
 function checkFingers(predictions) {
-  if (predictions.length > 0) {
-      const fingersUp = predictions[0].annotations.thumb[3][1] < predictions[0].annotations.indexFinger[3][1];
-      isTwoFingers = fingersUp && predictions[0].landmarks[9][1] < predictions[0].landmarks[7][1];
-  } else {
-      isTwoFingers = false;
-  }
+    if (predictions.length > 0) {
+        const fingersUp = predictions[0].annotations.thumb[3][1] < predictions[0].annotations.indexFinger[3][1];
+        isTwoFingers = fingersUp && predictions[0].landmarks[9][1] < predictions[0].landmarks[7][1];
+    } else {
+        isTwoFingers = false;
+    }
 }
 
 function takePicture() {
-  if (isTwoFingers) {
-      const canvas = document.getElementById('canvas');
-      const pictureDataUrl = canvas.toDataURL('image/png');
-      savedPictures.push(pictureDataUrl);
-      alert('Picture taken and saved!');
-  } else {
-      alert('Show two fingers to take a picture.');
-  }
+    if (isTwoFingers) {
+        const canvas = document.getElementById('canvas');
+        const pictureDataUrl = canvas.toDataURL('image/png');
+        savedPictures.push(pictureDataUrl);
+        alert('Picture taken and saved!');
+    } else {
+        alert('Show two fingers to take a picture.');
+    }
 }
